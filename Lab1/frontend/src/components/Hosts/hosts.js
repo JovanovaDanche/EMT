@@ -9,6 +9,7 @@ const hosts = (props) => {
                         <tr>
                             <th scope={"col"}>Name</th>
                             <th scope={"col"}>Surname</th>
+                            <th scope={"col"}>Country</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -17,6 +18,7 @@ const hosts = (props) => {
                                 <tr>
                                     <td>{term.name}</td>
                                     <td>{term.surname}</td>
+                                    <td>{term.country.name}</td>
                                 </tr>
                             );
                         })}

@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
@@ -80,6 +81,10 @@ public class AccommodationController {
             return ResponseEntity.ok(accommodations);
         }
 
+    }
+    @GetMapping("/categories")
+    public List<Category> getAllCategories(){
+        return List.of(Category.values());
     }
 
 }

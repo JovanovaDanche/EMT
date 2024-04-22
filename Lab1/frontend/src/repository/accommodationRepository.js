@@ -12,15 +12,17 @@ const AccommodationService = {
     deleteAccommodation: (id) => {
         return axios.delete(`/accommodations/delete/${id}`);
     },
+    fetchCategories: () => {
+        return axios.get("/accommodations/categories");
+    },
     addAccommodation: (name, category, numRooms,hostId) => {
         return axios.post("/accommodations/add", {
             "name": name,
+            "category": category,
             "numRooms": numRooms,
-            "hostId": hostId,
-            "category": category
+            "hostId": hostId
         });
     },
-
 
 
 }
