@@ -5,7 +5,7 @@ const AccommodationEdit = (props) => {
     const navigate=useNavigate();
     const [formData, updateFormData]=React.useState({
         name: "",
-        category: " ",
+        category: "MOTEL",
         numRooms: 0,
         hostId: -1
     })
@@ -19,7 +19,7 @@ const AccommodationEdit = (props) => {
     const onFormSubmit = (e) => {
         e.preventDefault();
         const name = formData.name !== "" ? formData.name : props.accommodation.name;
-        const category = formData.category !== " " ? formData.category : (props.accommodation ? props.accommodation.category : '');
+        const category = formData.category !== "MOTEL" ? formData.category : (props.accommodation ? props.accommodation.category : "");
         const numRooms = formData.numRooms !== 0 ? formData.numRooms : props.accommodation.numRooms;
         const hostId = formData.hostId !== -1 ? formData.hostId : (props.accommodation ? props.accommodation.host.id : 0);
         props.onEditAccommodation(props.accommodation.id,name,category,numRooms,hostId );
@@ -80,4 +80,3 @@ const AccommodationEdit = (props) => {
     )
 }
 export default AccommodationEdit;
-

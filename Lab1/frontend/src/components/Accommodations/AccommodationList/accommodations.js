@@ -1,8 +1,11 @@
-import React from "react";
+/*import React from "react";
 import AccommodationTerm from "../AccommodationTerm/accommodationTerm";
 import {Link} from "react-router-dom";
 import ReactPaginate from 'react-paginate'
 const accommodations = (props) => {
+    const perPage = 5;
+    const pageCount = Math.ceil(props.accommodations.length / perPage);
+
 return(
         <div className={"container mm-4 mt-5"}>
             <div className={"row"}>
@@ -19,7 +22,9 @@ return(
                         <tbody>
                         {props.accommodations.map((term) => {
                             return (
-                                <AccommodationTerm term={term} onDelete={props.onDelete} onEdit={props.onEdit}/>
+                                <AccommodationTerm term={term} onDelete={props.onDelete}
+                                                   onEdit={props.onEdit}
+                                                   onMark={props.onMark}/>
                             );
                         })}
                         </tbody>
@@ -38,25 +43,26 @@ return(
     );
 }
 export default accommodations;
-/*import React from "react";
+
+ */
+import React from "react";
 import AccommodationTerm from "../AccommodationTerm/accommodationTerm";
 import { Link } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
 
 const Accommodations = (props) => {
     const perPage = 5;
-    const totalAccommodations = props.accommodations.length;
-    const pageCount = Math.ceil(totalAccommodations / perPage);
+    const pageCount = Math.ceil(props.accommodations.length / perPage);
     const [currentPage, setCurrentPage] = React.useState(0);
+
+    const handlePageClick = ({ selected }) => {
+        setCurrentPage(selected);
+    };
 
     const displayedAccommodations = props.accommodations.slice(
         currentPage * perPage,
         (currentPage + 1) * perPage
     );
-
-    const handlePageClick = ({ selected }) => {
-        setCurrentPage(selected);
-    };
 
     return (
         <div className={"container mm-4 mt-5"}>
@@ -78,6 +84,8 @@ const Accommodations = (props) => {
                                     key={term.id}
                                     term={term}
                                     onDelete={props.onDelete}
+                                    onEdit={props.onEdit}
+                                    onMark={props.onMark}
                                 />
                             );
                         })}
@@ -110,7 +118,10 @@ const Accommodations = (props) => {
     );
 }
 
-export default Accommodations; */
+export default Accommodations;
+
+
+
 
 
 

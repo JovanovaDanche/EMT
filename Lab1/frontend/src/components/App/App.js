@@ -44,7 +44,8 @@ class App extends Component{
                                 <Route path={"/hosts"} element={<Hosts hosts={this.state.hosts}/>}/>
                                 <Route path={"/accommodations"} element={<Accommodations accommodations={this.state.accommodations}
                                                                                          onDelete={this.deleteAccommodation}
-                                                                                        onEdit={this.getAccommodation}/>}/>
+                                                                                        onEdit={this.getAccommodation}
+                                                                                         onMark={this.markAccommodation}/>}/>
                                 <Route path={"/categories"} element={<CategoryList categories={this.state.categories}/>}/>
                                 <Route path="*" element={<Navigate to="/accommodations" replace />} />
                             </Routes>
@@ -115,6 +116,12 @@ class App extends Component{
     }
     editAccommodation = (id, name, category,numRooms, hostId) => {
         AccommodationService.editAccommodation(id,name, category,numRooms, hostId)
+            .then(() => {
+                this.loadAccommodations();
+            });
+    }
+    markAccommodation = (id)=>{
+        AccommodationService.markAccommodation(id)
             .then(() => {
                 this.loadAccommodations();
             });

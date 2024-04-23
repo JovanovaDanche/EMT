@@ -18,6 +18,12 @@ const accommodationTerm= (props) => {
                       to={`/accommodations/edit/${props.term.id}`}>
                     Edit
                 </Link>
+                {props.term.numRooms>0 && (
+                <a  className={"btn btn-success ml-2"}
+                    onClick={() => props.onMark(props.term.id)}>
+                    Rent
+                </a>
+                )}
             </td>
         </tr>
     )

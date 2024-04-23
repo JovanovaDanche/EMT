@@ -34,6 +34,9 @@ const AccommodationService = {
     getAccommodation: (id) => {
         return axios.get(`/accommodations/${id}`);
     },
+    markAccommodation: (id) => {
+        return axios.post(`/accommodations/mark-accommodation/${id}`);
+    },
 
 }
 export default AccommodationService;
