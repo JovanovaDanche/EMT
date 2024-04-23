@@ -13,13 +13,12 @@ const accommodationTerm= (props) => {
                    onClick={() => props.onDelete(props.term.id)}>
                     Delete
                 </a>
-                </td>
-                {/*<Link className={"btn btn-info ml-2"}
+                <Link className={"btn btn-info ml-2"}
                       onClick={() => props.onEdit(props.term.id)}
-                      to={`/products/edit/${props.term.id}`}>
+                      to={`/accommodations/edit/${props.term.id}`}>
                     Edit
                 </Link>
-            </td> */}
+            </td>
         </tr>
     )
 

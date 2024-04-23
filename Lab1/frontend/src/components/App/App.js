@@ -9,6 +9,7 @@ import Header from '../Header/header';
 import AccommodationService from "../../repository/accommodationRepository";
 import AccommodationAdd from "../Accommodations/AccommodationAdd/accommodationAdd";
 import CategoryList from "../Categories/categories";
+import AccommodationEdit from "../Accommodations/AccommodationEdit/accommodationEdit";
 
 class App extends Component{
     constructor(props) {
@@ -17,8 +18,8 @@ class App extends Component{
             countries: [],
             hosts: [],
             accommodations: [],
-            categories: []
-            //selectedAccommodation: {}
+            categories: [],
+            selectedAccommodation: {}
         }
     }
     render() {
@@ -33,10 +34,17 @@ class App extends Component{
                                     hosts={this.state.hosts}
                                     onAddAccommodation={this.addAccommodation}/>}
                                     />
+                                <Route path={"/accommodations/edit/:id"} element={<AccommodationEdit
+                                    categories={this.state.categories}
+                                    hosts={this.state.hosts}
+                                    onEditAccommodation={this.editAccommodation}
+                                    accommodation={this.state.selectedAccommodation}/>}
+                                />
                                 <Route path="/countries" element={<Countries countries={this.state.countries}/>}/>
                                 <Route path={"/hosts"} element={<Hosts hosts={this.state.hosts}/>}/>
                                 <Route path={"/accommodations"} element={<Accommodations accommodations={this.state.accommodations}
-                                                                                         onDelete={this.deleteAccommodation}/>}/>
+                                                                                         onDelete={this.deleteAccommodation}
+                                                                                        onEdit={this.getAccommodation}/>}/>
                                 <Route path={"/categories"} element={<CategoryList categories={this.state.categories}/>}/>
                                 <Route path="*" element={<Navigate to="/accommodations" replace />} />
                             </Routes>
@@ -95,6 +103,20 @@ class App extends Component{
                 this.setState({
                     categories: data.data
                 })
+            });
+    }
+    getAccommodation = (id) => {
+        AccommodationService.getAccommodation(id)
+            .then((data) => {
+                this.setState({
+                    selectedAccommodation: data.data
+                })
+            })
+    }
+    editAccommodation = (id, name, category,numRooms, hostId) => {
+        AccommodationService.editAccommodation(id,name, category,numRooms, hostId)
+            .then(() => {
+                this.loadAccommodations();
             });
     }
 

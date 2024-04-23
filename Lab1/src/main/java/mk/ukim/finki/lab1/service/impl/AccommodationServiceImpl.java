@@ -84,6 +84,7 @@ public class AccommodationServiceImpl implements AccommodationService {
         accommodation.setName(accomodationDTO.getName());
         accommodation.setCategory(category);
         accommodation.setHost(host);
+        accommodation.setNumRooms(accomodationDTO.getNumRooms());
 
         this.accommodationRepository.save(accommodation);
         return Optional.of(accommodation);

@@ -23,7 +23,17 @@ const AccommodationService = {
             "hostId": hostId
         });
     },
-
+    editAccommodation: (id,name, category, numRooms,hostId ) => {
+        return axios.put(`/accommodations/edit/${id}`, {
+            "name": name,
+            "category": category,
+            "numRooms": numRooms,
+            "hostId": hostId
+        });
+    },
+    getAccommodation: (id) => {
+        return axios.get(`/accommodations/${id}`);
+    },
 
 }
 export default AccommodationService;
